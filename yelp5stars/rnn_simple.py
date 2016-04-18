@@ -52,7 +52,7 @@ if not os.path.isfile(EMBEDDING_FILE):
     # Build the language embedding with the given vector box and 300 words per text
     lembedding = OneLevelEmbedding(gbox, size=300)
     lembedding.compute(train_texts + test_texts)
-    lembedding.save_labels(train_labels + test_labels)
+    lembedding.set_labels(train_labels + test_labels)
     lembedding.save(EMBEDDING_FILE)
 else:
     lembedding = OneLevelEmbedding.load(EMBEDDING_FILE)

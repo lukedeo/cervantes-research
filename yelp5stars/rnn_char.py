@@ -44,7 +44,7 @@ if not os.path.isfile(EMBEDDING_FILE):
     # Build the language embedding with the given vector box and 2000 chars per text
     lembedding = OneLevelEmbedding(cbox, type=OneLevelEmbedding.CHAR_EMBEDDING, size=2000)
     lembedding.compute(train_texts + test_texts)
-    lembedding.save_labels(train_labels + test_labels)
+    lembedding.set_labels(train_labels + test_labels)
 
     print "Saving embedding"
     lembedding.save(EMBEDDING_FILE)
