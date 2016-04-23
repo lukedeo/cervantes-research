@@ -1,0 +1,13 @@
+Started training: 2016-04-18 02:08:03
+Stopped training: 2016-04-18 08:15:31
+Test set accuracy of 63.882%
+Test set error of 36.118%
+================================================================================
+Model: 
+{"class_name": "Sequential", "config": [{"class_name": "Embedding", "config": {"trainable": true, "name": "embedding_1", "activity_regularizer": null, "W_constraint": null, "init": "uniform", "input_dtype": "int32", "mask_zero": false, "input_dim": 120002, "batch_input_shape": [null, null], "W_regularizer": null, "dropout": 0.0, "output_dim": 300, "input_length": null}}, {"class_name": "GRU", "config": {"U_regularizer": null, "name": "gru_1", "inner_activation": "hard_sigmoid", "go_backwards": false, "output_dim": 64, "trainable": true, "unroll": false, "consume_less": "cpu", "stateful": false, "init": "glorot_uniform", "inner_init": "orthogonal", "dropout_U": 0.0, "dropout_W": 0.0, "input_dim": 300, "return_sequences": false, "b_regularizer": null, "W_regularizer": null, "activation": "tanh", "input_length": null}}, {"class_name": "Dropout", "config": {"p": 0.2, "trainable": true, "name": "dropout_1"}}, {"class_name": "Dense", "config": {"W_constraint": null, "b_constraint": null, "name": "dense_1", "activity_regularizer": null, "trainable": true, "init": "glorot_uniform", "input_dim": null, "b_regularizer": null, "W_regularizer": null, "activation": "softmax", "output_dim": 5}}]}
+================================================================================
+Training history:
+Epoch 1: loss: 0.933870, val_loss: 0.832448, acc: 0.588083, val_acc: 0.637651
+Epoch 2: loss: 0.793187, val_loss: 0.822923, acc: 0.657479, val_acc: 0.640174
+Epoch 3: loss: 0.732580, val_loss: 0.840742, acc: 0.687663, val_acc: 0.637990
+Epoch 4: loss: 0.670712, val_loss: 0.876578, acc: 0.719148, val_acc: 0.632749
