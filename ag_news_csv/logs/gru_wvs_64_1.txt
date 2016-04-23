@@ -1,0 +1,18 @@
+Started training: 2016-04-23 12:31:22
+Stopped training: 2016-04-23 13:30:59
+Test set accuracy of 92.579%
+Test set error of 7.421%
+================================================================================
+Model: 
+{"class_name": "Sequential", "config": [{"class_name": "Embedding", "config": {"trainable": true, "name": "embedding_1", "activity_regularizer": null, "W_constraint": null, "init": "uniform", "input_dtype": "int32", "mask_zero": false, "input_dim": 120002, "batch_input_shape": [null, null], "W_regularizer": null, "dropout": 0.0, "output_dim": 300, "input_length": null}}, {"class_name": "GRU", "config": {"U_regularizer": null, "name": "gru_1", "inner_activation": "hard_sigmoid", "go_backwards": false, "output_dim": 64, "trainable": true, "unroll": false, "consume_less": "cpu", "stateful": false, "init": "glorot_uniform", "inner_init": "orthogonal", "dropout_U": 0.0, "dropout_W": 0.0, "input_dim": 300, "return_sequences": false, "b_regularizer": null, "W_regularizer": null, "activation": "tanh", "input_length": null}}, {"class_name": "Dropout", "config": {"p": 0.2, "trainable": true, "name": "dropout_1"}}, {"class_name": "Dense", "config": {"W_constraint": null, "b_constraint": null, "name": "dense_1", "activity_regularizer": null, "trainable": true, "init": "glorot_uniform", "input_dim": null, "b_regularizer": null, "W_regularizer": null, "activation": "softmax", "output_dim": 4}}]}
+================================================================================
+Training history:
+Epoch 1: loss: 1.385914, val_loss: 1.385434, acc: 0.251265, val_acc: 0.250222
+Epoch 2: loss: 0.486205, val_loss: 0.232681, acc: 0.789284, val_acc: 0.921111
+Epoch 3: loss: 0.165834, val_loss: 0.231001, acc: 0.944814, val_acc: 0.923167
+Epoch 4: loss: 0.096344, val_loss: 0.278050, acc: 0.967980, val_acc: 0.917111
+Epoch 5: loss: 0.057159, val_loss: 0.371953, acc: 0.981539, val_acc: 0.905889
+Epoch 6: loss: 0.035910, val_loss: 0.378873, acc: 0.988137, val_acc: 0.909111
+Epoch 7: loss: 0.024484, val_loss: 0.436238, acc: 0.991951, val_acc: 0.908556
+Epoch 8: loss: 0.019500, val_loss: 0.452401, acc: 0.993676, val_acc: 0.907500
+Epoch 9: loss: 0.015275, val_loss: 0.485569, acc: 0.994971, val_acc: 0.908778
