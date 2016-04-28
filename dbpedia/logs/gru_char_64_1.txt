@@ -1,0 +1,39 @@
+Started training: 2016-04-22 15:42:13
+Stopped training: 2016-04-25 01:47:07
+Test set accuracy of 97.799%
+Test set error of 2.201%
+================================================================================
+Model: 
+{"class_name": "Sequential", "config": [{"class_name": "Embedding", "config": {"trainable": true, "name": "embedding_1", "activity_regularizer": null, "W_constraint": null, "init": "uniform", "input_dtype": "int32", "mask_zero": false, "input_dim": 99, "batch_input_shape": [null, null], "W_regularizer": null, "dropout": 0.0, "output_dim": 100, "input_length": null}}, {"class_name": "GRU", "config": {"U_regularizer": null, "name": "gru_1", "inner_activation": "hard_sigmoid", "go_backwards": false, "output_dim": 64, "trainable": true, "unroll": false, "consume_less": "cpu", "stateful": false, "init": "glorot_uniform", "inner_init": "orthogonal", "dropout_U": 0.0, "dropout_W": 0.0, "input_dim": 100, "return_sequences": false, "b_regularizer": null, "W_regularizer": null, "activation": "tanh", "input_length": null}}, {"class_name": "Dropout", "config": {"p": 0.2, "trainable": true, "name": "dropout_1"}}, {"class_name": "Dense", "config": {"W_constraint": null, "b_constraint": null, "name": "dense_1", "activity_regularizer": null, "trainable": true, "init": "glorot_uniform", "input_dim": null, "b_regularizer": null, "W_regularizer": null, "activation": "softmax", "output_dim": 14}}]}
+================================================================================
+Training history:
+Epoch 1: loss: 0.887117, val_loss: 0.233435, acc: 0.698303, val_acc: 0.926107
+Epoch 2: loss: 0.189626, val_loss: 0.153105, acc: 0.943485, val_acc: 0.954786
+Epoch 3: loss: 0.135091, val_loss: 0.121975, acc: 0.960952, val_acc: 0.965048
+Epoch 4: loss: 0.115220, val_loss: 0.104318, acc: 0.967233, val_acc: 0.969429
+Epoch 5: loss: 0.104582, val_loss: 0.096514, acc: 0.970160, val_acc: 0.971667
+Epoch 6: loss: 0.175489, val_loss: 0.131676, acc: 0.949813, val_acc: 0.961976
+Epoch 7: loss: 0.106261, val_loss: 0.111059, acc: 0.969742, val_acc: 0.967155
+Epoch 8: loss: 0.093716, val_loss: 0.094118, acc: 0.973643, val_acc: 0.973321
+Epoch 9: loss: 0.091069, val_loss: 0.090101, acc: 0.974372, val_acc: 0.974631
+Epoch 10: loss: 0.087408, val_loss: 0.088077, acc: 0.975639, val_acc: 0.975262
+Epoch 11: loss: 0.085128, val_loss: 0.085846, acc: 0.975977, val_acc: 0.975774
+Epoch 12: loss: 0.083677, val_loss: 0.085036, acc: 0.976519, val_acc: 0.975964
+Epoch 13: loss: 0.083114, val_loss: 0.082552, acc: 0.976981, val_acc: 0.976619
+Epoch 14: loss: 0.081176, val_loss: 0.083117, acc: 0.977265, val_acc: 0.976810
+Epoch 15: loss: 0.079139, val_loss: 0.091352, acc: 0.978025, val_acc: 0.974143
+Epoch 16: loss: 0.079056, val_loss: 0.085308, acc: 0.978011, val_acc: 0.976250
+Epoch 17: loss: 0.077805, val_loss: 0.083072, acc: 0.978498, val_acc: 0.976881
+Epoch 18: loss: 0.600573, val_loss: 0.751562, acc: 0.813319, val_acc: 0.763500
+Epoch 19: loss: 1.315449, val_loss: 0.301654, acc: 0.577160, val_acc: 0.907464
+Epoch 20: loss: 0.128591, val_loss: 0.086247, acc: 0.963172, val_acc: 0.975440
+Epoch 21: loss: 0.083517, val_loss: 0.087761, acc: 0.977017, val_acc: 0.976036
+Epoch 22: loss: 0.136338, val_loss: 0.087595, acc: 0.959227, val_acc: 0.975595
+Epoch 23: loss: 0.082459, val_loss: 0.080236, acc: 0.977172, val_acc: 0.977095
+Epoch 24: loss: 0.080725, val_loss: 0.080631, acc: 0.977595, val_acc: 0.977250
+Epoch 25: loss: 0.223259, val_loss: 0.342353, acc: 0.932074, val_acc: 0.893036
+Epoch 26: loss: 0.821574, val_loss: 0.409138, acc: 0.733443, val_acc: 0.873690
+Epoch 27: loss: 0.807836, val_loss: 1.006583, acc: 0.738706, val_acc: 0.668869
+Epoch 28: loss: 0.910316, val_loss: 0.421236, acc: 0.693922, val_acc: 0.868143
+Epoch 29: loss: 0.282450, val_loss: 0.145028, acc: 0.914618, val_acc: 0.956857
+Epoch 30: loss: 0.121758, val_loss: 0.094027, acc: 0.965784, val_acc: 0.973464
