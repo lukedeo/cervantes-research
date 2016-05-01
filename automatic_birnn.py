@@ -69,6 +69,13 @@ print("==" * 40)
 print("DBPedia")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_dbpedia_data()
+FIT_PARAMS = {
+    "batch_size": 32,
+    "nb_epoch": 100,
+    "verbose": 2,
+    "validation_split": 0.15,
+    "callbacks": [EarlyStopping(verbose=True, patience=2, monitor='val_acc')]
+}
 gogogo_wv(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
           embedding_file="DBPedia_WVs.pkl", embedding_size=140, wv_file=WV_FILE,
@@ -82,6 +89,13 @@ print("==" * 40)
 print("Yelp Polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_polarity_data()
+FIT_PARAMS = {
+    "batch_size": 32,
+    "nb_epoch": 100,
+    "verbose": 2,
+    "validation_split": 0.15,
+    "callbacks": [EarlyStopping(verbose=True, patience=2, monitor='val_acc')]
+}
 gogogo_wv(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
           embedding_file="YelpPolarity_WVs.pkl", embedding_size=500, wv_file=WV_FILE,
@@ -95,6 +109,13 @@ print("==" * 40)
 print("Yelp Full Data")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_full_data()
+FIT_PARAMS = {
+    "batch_size": 32,
+    "nb_epoch": 100,
+    "verbose": 2,
+    "validation_split": 0.15,
+    "callbacks": [EarlyStopping(verbose=True, patience=2, monitor='val_acc')]
+}
 gogogo_wv(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
           embedding_file="YelpFull_WVs.pkl", embedding_size=500, wv_file=WV_FILE,
@@ -108,6 +129,13 @@ print("==" * 40)
 print("Yahoo")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yahoo_data()
+FIT_PARAMS = {
+    "batch_size": 32,
+    "nb_epoch": 100,
+    "verbose": 2,
+    "validation_split": 0.15,
+    "callbacks": [EarlyStopping(verbose=True, patience=2, monitor='val_acc')]
+}
 gogogo_wv(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
           embedding_file="Yahoo_WVs.pkl", embedding_size=400, wv_file=WV_FILE,
@@ -121,6 +149,13 @@ print("==" * 40)
 print("Amazon polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_polarity_data()
+FIT_PARAMS = {
+    "batch_size": 32,
+    "nb_epoch": 100,
+    "verbose": 2,
+    "validation_split": 0.15,
+    "callbacks": [EarlyStopping(verbose=True, patience=2, monitor='val_acc')]
+}
 gogogo_wv(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
           embedding_file="AmazonPolarity_WVs.pkl", embedding_size=200, wv_file=WV_FILE,
@@ -134,6 +169,13 @@ print("==" * 40)
 print("Amazon Full")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_full_data()
+FIT_PARAMS = {
+    "batch_size": 32,
+    "nb_epoch": 100,
+    "verbose": 2,
+    "validation_split": 0.15,
+    "callbacks": [EarlyStopping(verbose=True, patience=2, monitor='val_acc')]
+}
 gogogo_wv(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
           embedding_file="AmazonFull_WVs.pkl", embedding_size=200, wv_file=WV_FILE,
