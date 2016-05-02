@@ -7,6 +7,14 @@ def shuffle_data(train_values, labels):
         zipped = zip(*combined_lists)
         return list(zipped[0]), list(zipped[1])
 
+def clean(texts):
+    cleaned_texts = []
+    for text in texts:
+        new_text = text.replace("\\n", "\n")
+        new_text = new_text.replace('\\"', '"')
+        cleaned_texts.append(new_text)
+    return cleaned_texts
+
 ##### AG News
 
 def parse_ag_news(filepath):
@@ -17,6 +25,7 @@ def parse_ag_news(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1] + ".  " + row[2])
+        texts = clean(texts)
         return texts, labels
 
 
@@ -62,6 +71,7 @@ def parse_dbpedia(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1] + ".  " + row[2])
+        texts = clean(texts)
         return texts, labels
 
 def get_dbpedia_data():
@@ -83,6 +93,7 @@ def parse_yelp_full(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1])
+        texts = clean(texts)
         return texts, labels
 
 def get_yelp_full_data():
@@ -104,6 +115,7 @@ def parse_yelp_polarity(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1])
+        texts = clean(texts)
         return texts, labels
 
 def get_yelp_polarity_data():
@@ -125,6 +137,7 @@ def parse_yahoo(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1] + ".  " + row[2] + ". " + row[3])
+        texts = clean(texts)
         return texts, labels
 
 def get_yahoo_data():
@@ -146,6 +159,7 @@ def parse_amazon_polarity(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1] + ". " + row[2])
+        texts = clean(texts)
         return texts, labels
 
 def get_amazon_polarity_data():
@@ -167,6 +181,7 @@ def parse_amazon_full(filepath):
         for row in csv_reader:
             labels.append(int(row[0]) - 1)
             texts.append(row[1] + ". " + row[2])
+        texts = clean(texts)
         return texts, labels
 
 def get_amazon_full_data():
