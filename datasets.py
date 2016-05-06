@@ -5,7 +5,7 @@ import os
 BASE_DIR='../data'
 
 def find_file(f):
-    return os.path.append(BASE_DIR, f) 
+    return os.path.join(BASE_DIR, f) 
 
 def shuffle_data(train_values, labels):
         combined_lists = zip(train_values, labels)
