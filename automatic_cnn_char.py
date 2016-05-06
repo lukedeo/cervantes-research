@@ -12,7 +12,7 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
 
     if not os.path.isfile(embedding_file):
         cbox = EnglishCharBox(vector_dim=50)
-
+        size_level1, size_level2 = CHARACTERS_PER_WORD, WORDS_PER_DOCUMENT
         # Build the language embedding with the given vector box and 300 words per text
         print "Computing embedding"
         lembedding = OneLevelEmbedding(cbox, type=OneLevelEmbedding.CHAR_EMBEDDING, size=embedding_size,

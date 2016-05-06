@@ -5,6 +5,9 @@ from cervantes.box import WordVectorBox, EnglishCharBox
 from cervantes.language import OneLevelEmbedding, TwoLevelsEmbedding
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
+
+CHARACTERS_PER_WORD = 15
+
 def gogogo_char(train_texts, train_labels, test_texts, test_labels,
               embedding_file, embedding_size,
               model_weights_file, model_spec_file, log_file,
@@ -18,11 +21,14 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
 
         # Build the language embedding with the given vector box and 2000 chars
         # per text
+        # size_level1, size_level2 = CHARACTERS_PER_WORD, WORDS_PER_DOCUMENT
+        size_level1, size_level2 = (CHARACTERS_PER_WORD, embedding_size / CHARACTERS_PER_WORD)
+
         lembedding = TwoLevelsEmbedding(
             vector_box=cbox,
             type=TwoLevelsEmbedding.CHAR_WORD_EMBEDDING,
-            size_level1=CHARACTERS_PER_WORD,
-            size_level2=WORDS_PER_DOCUMENT
+            size_level1=size_level1,
+            size_level2=size_level2
         )
 
         lembedding.compute(train_texts + test_texts)
