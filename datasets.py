@@ -1,5 +1,11 @@
 import csv
 import numpy as np
+import os
+
+BASE_DIR='../data'
+
+def find_file(f):
+    return os.path.append(BASE_DIR, f) 
 
 def shuffle_data(train_values, labels):
         combined_lists = zip(train_values, labels)
@@ -30,8 +36,8 @@ def parse_ag_news(filepath):
 
 
 def get_ag_news_data():
-    TRAIN_FILE = "../ag_news_csv/train.csv"
-    TEST_FILE = "../ag_news_csv/test.csv"
+    TRAIN_FILE = find_file("ag_news_csv/train.csv")
+    TEST_FILE = find_file("ag_news_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_ag_news(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_ag_news(TEST_FILE))
@@ -53,8 +59,8 @@ def parse_sogou(filepath):
         return texts, labels
 
 def get_sogou_data():
-    TRAIN_FILE = "../sogou_news_csv/train.csv"
-    TEST_FILE = "../sogou_news_csv/test.csv"
+    TRAIN_FILE = find_file("sogou_news_csv/train.csv")
+    TEST_FILE = find_file("sogou_news_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_sogou(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_sogou(TEST_FILE))
@@ -75,8 +81,8 @@ def parse_dbpedia(filepath):
         return texts, labels
 
 def get_dbpedia_data():
-    TRAIN_FILE = "../dbpedia_csv/train.csv"
-    TEST_FILE = "../dbpedia_csv/test.csv"
+    TRAIN_FILE = find_file("dbpedia_csv/train.csv")
+    TEST_FILE = find_file("dbpedia_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_dbpedia(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_dbpedia(TEST_FILE))
@@ -97,8 +103,8 @@ def parse_yelp_full(filepath):
         return texts, labels
 
 def get_yelp_full_data():
-    TRAIN_FILE = "../yelp_review_full_csv/train.csv"
-    TEST_FILE = "../yelp_review_full_csv/test.csv"
+    TRAIN_FILE = find_file("yelp_review_full_csv/train.csv")
+    TEST_FILE = find_file("yelp_review_full_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_yelp_full(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_yelp_full(TEST_FILE))
@@ -119,8 +125,8 @@ def parse_yelp_polarity(filepath):
         return texts, labels
 
 def get_yelp_polarity_data():
-    TRAIN_FILE = "../yelp_review_polarity_csv/train.csv"
-    TEST_FILE = "../yelp_review_polarity_csv/test.csv"
+    TRAIN_FILE = find_file("yelp_review_polarity_csv/train.csv")
+    TEST_FILE = find_file("yelp_review_polarity_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_yelp_polarity(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_yelp_polarity(TEST_FILE))
@@ -141,8 +147,8 @@ def parse_yahoo(filepath):
         return texts, labels
 
 def get_yahoo_data():
-    TRAIN_FILE = "../yahoo_answers_csv/train.csv"
-    TEST_FILE = "../yahoo_answers_csv/test.csv"
+    TRAIN_FILE = find_file("yahoo_answers_csv/train.csv")
+    TEST_FILE = find_file("yahoo_answers_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_yahoo(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_yahoo(TEST_FILE))
@@ -163,8 +169,8 @@ def parse_amazon_polarity(filepath):
         return texts, labels
 
 def get_amazon_polarity_data():
-    TRAIN_FILE = "../amazon_review_polarity_csv/train.csv"
-    TEST_FILE = "../amazon_review_polarity_csv/test.csv"
+    TRAIN_FILE = find_file("amazon_review_polarity_csv/train.csv")
+    TEST_FILE = find_file("amazon_review_polarity_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_amazon_polarity(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_amazon_polarity(TEST_FILE))
@@ -185,8 +191,8 @@ def parse_amazon_full(filepath):
         return texts, labels
 
 def get_amazon_full_data():
-    TRAIN_FILE = "../amazon_review_full_csv/train.csv"
-    TEST_FILE = "../amazon_review_full_csv/test.csv"
+    TRAIN_FILE = find_file("amazon_review_full_csv/train.csv")
+    TEST_FILE = find_file("amazon_review_full_csv/test.csv")
 
     (train_texts, train_labels) = shuffle_data(*parse_amazon_full(TRAIN_FILE))
     (test_texts, test_labels) = shuffle_data(*parse_amazon_full(TEST_FILE))
