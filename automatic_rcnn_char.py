@@ -54,7 +54,7 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
                     y_test=lembedding.labels[len(train_labels):])
 
 import datasets
-from cervantes.nn.models import RNNClassifier, BasicCNNClassifier
+from cervantes.nn.models import RCNNClassifier, BasicCNNClassifier
 
 
 RESULTS_DIR = "./experiments/char_rcnn_gru_results/"
