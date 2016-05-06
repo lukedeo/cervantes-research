@@ -11,7 +11,7 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
               num_classes, keras_params):
 
     print "Building language embedding"
-    if not os.path.isfile(EMBEDDING_FILE):
+    if not os.path.isfile(embedding_file):
 
         print "Building character embedding"
         cbox = EnglishCharBox(vector_dim=50)
@@ -29,10 +29,10 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
         lembedding.set_labels(train_labels + test_labels)
 
         print "Saving embedding"
-        lembedding.save(EMBEDDING_FILE)
+        lembedding.save(embedding_file)
     else:
         print "Embedding already created, loading"
-        lembedding = TwoLevelsEmbedding.load(EMBEDDING_FILE)
+        lembedding = TwoLevelsEmbedding.load(embedding_file)
 
     #  MODEL DEPENDENT
     clf = RCNNClassifier(lembedding, num_classes=num_classes, optimizer='adam')
