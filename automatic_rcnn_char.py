@@ -1,6 +1,7 @@
 import os
 import numpy as np
 
+print("Importing embeddings")
 from cervantes.box import WordVectorBox, EnglishCharBox
 from cervantes.language import OneLevelEmbedding, TwoLevelsEmbedding
 from keras.callbacks import EarlyStopping, ModelCheckpoint
@@ -53,7 +54,10 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
                     X_test=lembedding.data[len(train_labels):],
                     y_test=lembedding.labels[len(train_labels):])
 
+
 import datasets
+
+print("Importing models")
 from cervantes.nn.models import RCNNClassifier, BasicCNNClassifier
 
 
