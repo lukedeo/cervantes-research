@@ -200,7 +200,7 @@ print("==" * 40)
 print("Amazon polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_polarity_data()
-n = min(len(train_labels), 220000)
+n = min(len(train_labels), 100000)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
