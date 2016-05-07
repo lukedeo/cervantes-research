@@ -31,8 +31,6 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
             size_level1=size_level1,
             size_level2=size_level2
         )
-        n = min(len(train_labels), 220000)
-        train_texts, train_labels = train_texts[:n], train_labels[:n]
 
         lembedding.compute(train_texts + test_texts)
         lembedding.set_labels(train_labels + test_labels)
@@ -77,6 +75,8 @@ RESULTS_DIR = "./experiments/char_rcnn_gru_results/"
 # print("AG_NEWS")
 # print("==" * 40)
 # train_texts, train_labels, test_texts, test_labels = datasets.get_ag_news_data()
+# n = min(len(train_labels), 220000)
+# train_texts, train_labels = train_texts[:n], train_labels[:n]
 # gogogo_char(train_texts=train_texts, train_labels=train_labels,
 #           test_texts=test_texts, test_labels=test_labels,
 #           embedding_file="AGNews_chars.pkl", embedding_size=800,
@@ -90,6 +90,8 @@ print("==" * 40)
 print("Sogou")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_sogou_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
@@ -110,6 +112,8 @@ print("==" * 40)
 print("DBPedia")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_dbpedia_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
@@ -130,6 +134,8 @@ print("==" * 40)
 print("Yelp Polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_polarity_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
@@ -150,6 +156,8 @@ print("==" * 40)
 print("Yelp Full Data")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_full_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
@@ -170,6 +178,8 @@ print("==" * 40)
 print("Yahoo")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yahoo_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
@@ -190,6 +200,8 @@ print("==" * 40)
 print("Amazon polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_polarity_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
@@ -210,6 +222,8 @@ print("==" * 40)
 print("Amazon Full")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_full_data()
+n = min(len(train_labels), 220000)
+train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
     "batch_size": 512,
     "nb_epoch": 100,
