@@ -1,7 +1,7 @@
 import os
 import numpy as np
 
-print("Importing embeddings")
+print "Importing embeddings" 
 from cervantes.box import WordVectorBox, EnglishCharBox
 from cervantes.language import OneLevelEmbedding, TwoLevelsEmbedding
 from keras.callbacks import EarlyStopping, ModelCheckpoint
@@ -31,6 +31,8 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
             size_level1=size_level1,
             size_level2=size_level2
         )
+        n = min(len(train_labels), 220000)
+        train_texts, train_labels = train_texts[:n], train_labels[:n]
 
         lembedding.compute(train_texts + test_texts)
         lembedding.set_labels(train_labels + test_labels)
@@ -57,39 +59,39 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
 
 import datasets
 
-print("Importing models")
+print "Importing models"
 from cervantes.nn.models import RCNNClassifier, BasicCNNClassifier
 
 
 RESULTS_DIR = "./experiments/char_rcnn_gru_results/"
 
-FIT_PARAMS = {
-    "batch_size": 32,
-    "nb_epoch": 100,
-    "verbose": 2,
-    "validation_split": 0.15,
-    "callbacks": [EarlyStopping(verbose=True, patience=5, monitor='val_acc')]
-}
+# FIT_PARAMS = {
+#     "batch_size": 512,
+#     "nb_epoch": 100,
+#     "verbose": 2,
+#     "validation_split": 0.15,
+#     "callbacks": [EarlyStopping(verbose=True, patience=5, monitor='val_acc')]
+# }
 
-print("==" * 40)
-print("AG_NEWS")
-print("==" * 40)
-train_texts, train_labels, test_texts, test_labels = datasets.get_ag_news_data()
-gogogo_char(train_texts=train_texts, train_labels=train_labels,
-          test_texts=test_texts, test_labels=test_labels,
-          embedding_file="AGNews_chars.pkl", embedding_size=800,
-          model_weights_file=RESULTS_DIR + "ag_news.weights",
-          model_spec_file=RESULTS_DIR + "ag_news.spec",
-          log_file=RESULTS_DIR + "ag_news.log",
-          num_classes=4,
-          keras_params=FIT_PARAMS)
+# print("==" * 40)
+# print("AG_NEWS")
+# print("==" * 40)
+# train_texts, train_labels, test_texts, test_labels = datasets.get_ag_news_data()
+# gogogo_char(train_texts=train_texts, train_labels=train_labels,
+#           test_texts=test_texts, test_labels=test_labels,
+#           embedding_file="AGNews_chars.pkl", embedding_size=800,
+#           model_weights_file=RESULTS_DIR + "ag_news.weights",
+#           model_spec_file=RESULTS_DIR + "ag_news.spec",
+#           log_file=RESULTS_DIR + "ag_news.log",
+#           num_classes=4,
+#           keras_params=FIT_PARAMS)
 
 print("==" * 40)
 print("Sogou")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_sogou_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -109,7 +111,7 @@ print("DBPedia")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_dbpedia_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -129,7 +131,7 @@ print("Yelp Polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_polarity_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -149,7 +151,7 @@ print("Yelp Full Data")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_full_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -169,7 +171,7 @@ print("Yahoo")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_yahoo_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -189,7 +191,7 @@ print("Amazon polarity")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_polarity_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -209,7 +211,7 @@ print("Amazon Full")
 print("==" * 40)
 train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_full_data()
 FIT_PARAMS = {
-    "batch_size": 32,
+    "batch_size": 512,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
