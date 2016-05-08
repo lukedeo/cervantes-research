@@ -8,11 +8,12 @@ from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 NTRAIN = 140000
 CHARACTERS_PER_WORD = 15
+TRAIN = False
 
 def gogogo_char(train_texts, train_labels, test_texts, test_labels,
               embedding_file, embedding_size,
               model_weights_file, model_spec_file, log_file,
-              num_classes, keras_params):
+              num_classes, keras_params, train):
 
     print "Building language embedding"
     if not os.path.isfile(embedding_file):
@@ -39,20 +40,24 @@ def gogogo_char(train_texts, train_labels, test_texts, test_labels,
         lembedding.save(embedding_file)
     else:
         print "Embedding already created, loading"
-        lembedding = TwoLevelsEmbedding.load(embedding_file)
+        if train:
+            lembedding = TwoLevelsEmbedding.load(embedding_file)
 
-    #  MODEL DEPENDENT
-    clf = RCNNClassifier(lembedding, num_classes=num_classes, optimizer='adam')
-    # ! MODEL DEPENDENT
-    clf.train(X=lembedding.data[:len(train_labels)], y=lembedding.labels[:len(train_labels)],
-              model_weights_file=model_weights_file, model_spec_file=model_spec_file, **keras_params)
-    
-    clf.test(X=lembedding.data[len(train_labels):],
-             y=lembedding.labels[len(train_labels):])
-    
-    clf.log_results(log_file, 
-                    X_test=lembedding.data[len(train_labels):],
-                    y_test=lembedding.labels[len(train_labels):])
+    if train:
+        #  MODEL DEPENDENT
+        clf = RCNNClassifier(lembedding, num_classes=num_classes, optimizer='adam')
+        # ! MODEL DEPENDENT
+        clf.train(X=lembedding.data[:len(train_labels)], y=lembedding.labels[:len(train_labels)],
+                model_weights_file=model_weights_file, model_spec_file=model_spec_file, **keras_params)
+
+        clf.test(X=lembedding.data[len(train_labels):],
+               y=lembedding.labels[len(train_labels):])
+
+        clf.log_results(log_file, 
+                  X_test=lembedding.data[len(train_labels):],
+                  y_test=lembedding.labels[len(train_labels):])
+    else:
+        del lembedding
 
 
 import datasets
@@ -84,7 +89,7 @@ RESULTS_DIR = "./experiments/char_rcnn_gru_results/"
 #           model_spec_file=RESULTS_DIR + "ag_news.spec",
 #           log_file=RESULTS_DIR + "ag_news.log",
 #           num_classes=4,
-#           keras_params=FIT_PARAMS)
+#           keras_params=FIT_PARAMS, train=TRAIN)
 
 
 
@@ -108,7 +113,7 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "sogou.spec",
           log_file=RESULTS_DIR + "sogou.log",
           num_classes=5,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
 
 print("==" * 40)
 print("DBPedia")
@@ -130,7 +135,7 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "dbpedia.spec",
           log_file=RESULTS_DIR + "dbpedia.log",
           num_classes=14,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
 
 print("==" * 40)
 print("Yelp Polarity")
@@ -152,7 +157,7 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "yelp_polarity.spec",
           log_file=RESULTS_DIR + "yelp_polarity.log",
           num_classes=2,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
 
 print("==" * 40)
 print("Yelp Full Data")
@@ -174,7 +179,7 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "yelp_full.spec",
           log_file=RESULTS_DIR + "yelp_full.log",
           num_classes=5,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
 
 print("==" * 40)
 print("Yahoo")
@@ -196,7 +201,7 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "yahoo.spec",
           log_file=RESULTS_DIR + "yahoo.log",
           num_classes=10,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
 
 print("==" * 40)
 print("Amazon polarity")
@@ -218,7 +223,7 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "amazon_polarity.spec",
           log_file=RESULTS_DIR + "amazon_polarity.log",
           num_classes=2,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
 
 print("==" * 40)
 print("Amazon Full")
@@ -240,4 +245,4 @@ gogogo_char(train_texts=train_texts, train_labels=train_labels,
           model_spec_file=RESULTS_DIR + "amazon_full.spec",
           log_file=RESULTS_DIR + "amazon_full.log",
           num_classes=5,
-          keras_params=FIT_PARAMS)
+          keras_params=FIT_PARAMS, train=TRAIN)
