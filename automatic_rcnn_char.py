@@ -6,7 +6,7 @@ from cervantes.box import WordVectorBox, EnglishCharBox
 from cervantes.language import OneLevelEmbedding, TwoLevelsEmbedding
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
-NTRAIN = 100000
+NTRAIN = 140000
 CHARACTERS_PER_WORD = 15
 
 def gogogo_char(train_texts, train_labels, test_texts, test_labels,
@@ -64,7 +64,7 @@ from cervantes.nn.models import RCNNClassifier, BasicCNNClassifier
 RESULTS_DIR = "./experiments/char_rcnn_gru_results/"
 
 # FIT_PARAMS = {
-#     "batch_size": 512,
+#     "batch_size": 128,
 #     "nb_epoch": 100,
 #     "verbose": 2,
 #     "validation_split": 0.15,
@@ -79,7 +79,7 @@ RESULTS_DIR = "./experiments/char_rcnn_gru_results/"
 # train_texts, train_labels = train_texts[:n], train_labels[:n]
 # gogogo_char(train_texts=train_texts, train_labels=train_labels,
 #           test_texts=test_texts, test_labels=test_labels,
-#           embedding_file="AGNews_chars.pkl", embedding_size=800,
+#           embedding_file="embeddings/AGNews_chars.pkl", embedding_size=800,
 #           model_weights_file=RESULTS_DIR + "ag_news.weights",
 #           model_spec_file=RESULTS_DIR + "ag_news.spec",
 #           log_file=RESULTS_DIR + "ag_news.log",
@@ -95,7 +95,7 @@ train_texts, train_labels, test_texts, test_labels = datasets.get_sogou_data()
 n = min(len(train_labels), NTRAIN)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
-    "batch_size": 512,
+    "batch_size": 128,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -103,7 +103,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="Sogou_chars.pkl", embedding_size=6000,
+          embedding_file="embeddings/Sogou_chars.pkl", embedding_size=2000,
           model_weights_file=RESULTS_DIR + "sogou.weights",
           model_spec_file=RESULTS_DIR + "sogou.spec",
           log_file=RESULTS_DIR + "sogou.log",
@@ -125,7 +125,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="DBPedia_chars.pkl", embedding_size=800,
+          embedding_file="embeddings/DBPedia_chars.pkl", embedding_size=800,
           model_weights_file=RESULTS_DIR + "dbpedia.weights",
           model_spec_file=RESULTS_DIR + "dbpedia.spec",
           log_file=RESULTS_DIR + "dbpedia.log",
@@ -139,7 +139,7 @@ train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_polarity_
 n = min(len(train_labels), NTRAIN)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
-    "batch_size": 512,
+    "batch_size": 128,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -147,7 +147,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="YelpPolarity_chars.pkl", embedding_size=2000,
+          embedding_file="embeddings/YelpPolarity_chars.pkl", embedding_size=2000,
           model_weights_file=RESULTS_DIR + "yelp_polarity.weights",
           model_spec_file=RESULTS_DIR + "yelp_polarity.spec",
           log_file=RESULTS_DIR + "yelp_polarity.log",
@@ -161,7 +161,7 @@ train_texts, train_labels, test_texts, test_labels = datasets.get_yelp_full_data
 n = min(len(train_labels), NTRAIN)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
-    "batch_size": 512,
+    "batch_size": 128,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -169,7 +169,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="YelpFull_chars.pkl", embedding_size=2000,
+          embedding_file="embeddings/YelpFull_chars.pkl", embedding_size=2000,
           model_weights_file=RESULTS_DIR + "yelp_full.weights",
           model_spec_file=RESULTS_DIR + "yelp_full.spec",
           log_file=RESULTS_DIR + "yelp_full.log",
@@ -183,7 +183,7 @@ train_texts, train_labels, test_texts, test_labels = datasets.get_yahoo_data()
 n = min(len(train_labels), NTRAIN)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
-    "batch_size": 512,
+    "batch_size": 128,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -191,7 +191,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="Yahoo_chars.pkl", embedding_size=2000,
+          embedding_file="embeddings/Yahoo_chars.pkl", embedding_size=2000,
           model_weights_file=RESULTS_DIR + "yahoo.weights",
           model_spec_file=RESULTS_DIR + "yahoo.spec",
           log_file=RESULTS_DIR + "yahoo.log",
@@ -205,7 +205,7 @@ train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_polarit
 n = min(len(train_labels), NTRAIN)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
-    "batch_size": 512,
+    "batch_size": 128,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -213,7 +213,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="AmazonPolarity_chars.pkl", embedding_size=1000,
+          embedding_file="embeddings/AmazonPolarity_chars.pkl", embedding_size=1000,
           model_weights_file=RESULTS_DIR + "amazon_polarity.weights",
           model_spec_file=RESULTS_DIR + "amazon_polarity.spec",
           log_file=RESULTS_DIR + "amazon_polarity.log",
@@ -227,7 +227,7 @@ train_texts, train_labels, test_texts, test_labels = datasets.get_amazon_full_da
 n = min(len(train_labels), NTRAIN)
 train_texts, train_labels = train_texts[:n], train_labels[:n]
 FIT_PARAMS = {
-    "batch_size": 512,
+    "batch_size": 128,
     "nb_epoch": 100,
     "verbose": 2,
     "validation_split": 0.15,
@@ -235,7 +235,7 @@ FIT_PARAMS = {
 }
 gogogo_char(train_texts=train_texts, train_labels=train_labels,
           test_texts=test_texts, test_labels=test_labels,
-          embedding_file="AmazonFull_chars.pkl", embedding_size=1000,
+          embedding_file="embeddings/AmazonFull_chars.pkl", embedding_size=1000,
           model_weights_file=RESULTS_DIR + "amazon_full.weights",
           model_spec_file=RESULTS_DIR + "amazon_full.spec",
           log_file=RESULTS_DIR + "amazon_full.log",
