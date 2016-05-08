@@ -38,9 +38,10 @@ def _build_embeddings(train_texts, train_labels, test_texts, test_labels,
 
 
 def construct(dataset, embedding_size):
-    func = getattr(datasets, 'get_%s_data' % dataset)
-    
-    _build_embeddings(*func(),
+    assert dataset in {'ag_news', 'sogou', 'dbpedia', 'yelp_polarity', 
+                       'yelp_full', 'yahoo', 'amazon_polarity', 'amazon_full'}
+                       
+    _build_embeddings(*getattr(datasets, 'get_%s_data' % dataset),
                       embedding_file='embeddings/%s_len_%i_chars.pkl' % (
                       dataset, embedding_size), embedding_size=embedding_size,
                       vector_dim=50)
@@ -48,7 +49,8 @@ def construct(dataset, embedding_size):
 
 if __name__ == '__main__':
     
-    datasets = ['ag_news' 'sogou' 'dbpedia' 'yelp_polarity' 'yelp_full' 'yahoo' 'amazon_polarity' 'amazon_full']
+    datasets = ['ag_news', 'sogou', 'dbpedia', 'yelp_polarity', 'yelp_full', 
+                'yahoo', 'amazon_polarity', 'amazon_full']
     sizes = [800, 2000, 800, 2000, 2000, 2000, 1000, 1000]
 
 
